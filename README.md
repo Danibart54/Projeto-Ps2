@@ -30,7 +30,7 @@ Estudante	Cadastra-se, busca vagas e realiza inscrições.	CRUD de perfil e insc
 ## ⚙️ Requisitos Funcionais
 1. Cadastro e autenticação
  - Login individual para estudantes, empresas e administradores.
- - Senhas criptografadas (BCrypt).
+ - Senhas criptografadas.
 
 2. Áreas de interesse (Admin)
   - CRUD completo, acessível apenas por administradores.
