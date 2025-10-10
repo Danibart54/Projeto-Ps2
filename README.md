@@ -1,4 +1,4 @@
-### 🎓 Portal de Estágios – Projeto Final de Linguagem de Programação II
+# 🎓 Portal de Estágios – Projeto Final de Linguagem de Programação II
 
 Este projeto tem como objetivo desenvolver um Portal de Estágios que conecta estudantes, empresas e administradores em uma plataforma web moderna e integrada.
 A aplicação é composta por um backend RESTful em Java (Spring Boot) e uma SPA (Single Page Application) desenvolvida com framework JavaScript (React).
