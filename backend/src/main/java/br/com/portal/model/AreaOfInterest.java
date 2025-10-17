@@ -1,3 +1,6 @@
+
+import javax.persistence.*;
+
 @Entity
 public class AreaOfInterest {
     @Id

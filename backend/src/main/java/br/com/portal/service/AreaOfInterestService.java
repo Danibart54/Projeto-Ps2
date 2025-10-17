@@ -1,4 +1,11 @@
 
+
+import br.com.portal.model.AreaOfInterest;
+import br.com.portal.repository.AreaOfInterestRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
 @Service
 public class AreaOfInterestService {
 
