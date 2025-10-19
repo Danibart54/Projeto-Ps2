@@ -16,7 +16,7 @@ public class UsuarioService {
     private final UsuarioDAO usuarioDAO;
 
     @Autowired
-    public UserService(UsuarioRepository usuarioRepository, UsuarioDAO usuarioDAO) {
+    public UsuarioService(UsuarioRepository usuarioRepository, UsuarioDAO usuarioDAO) {
         this.usuarioRepository = usuarioRepository;
         this.usuarioDAO = usuarioDAO;
     }
@@ -36,6 +36,4 @@ public class UsuarioService {
     public void deleteById(Long id) {
         usuarioRepository.deleteById(id);
     }
-
-    // Additional business logic methods can be added here
 }
