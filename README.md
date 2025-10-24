@@ -11,7 +11,6 @@ A aplicação é composta por um backend RESTful em Java (Spring Boot) e uma SPA
  - 🧩 Tecnologias Utilizadas
  - 🚀 Instruções de Execução
  - 📊 Funcionalidades Extras
- - 📈 Dashboard e Estatísticas
  - 🌐 Hospedagem (opcional)
  - 🧑‍💻 Equipe de Desenvolvimento
 
