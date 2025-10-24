@@ -173,4 +173,5 @@ Além das funcionalidades obrigatórias, o **Portal de Estágios** inclui propos
 ## 🧑‍💻 Equipe de Desenvolvimento
 
 Dev Backend - José Pedro (https://github.com/JP18090)
+<br>
 Dev Frontend - Daniel Bartels (https://github.com/Danibart54)
