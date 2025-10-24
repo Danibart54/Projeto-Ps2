@@ -7,10 +7,9 @@ A aplicação é composta por um backend RESTful em Java (Spring Boot) e uma SPA
  - 🎯 Objetivo do Projeto
  - 👥 Perfis de Usuário
  - ⚙️ Requisitos Funcionais
- - 💻 Arquitetura da Solução
  - 🧩 Tecnologias Utilizadas
- - 🚀 Instruções de Execução
- - 📊 Funcionalidades Extras
+ - 💻 Arquitetura da Solução
+ - 🧠 Funcionalidades Inovadoras
  - 🌐 Hospedagem (opcional)
  - 🧑‍💻 Equipe de Desenvolvimento
 
@@ -171,3 +170,7 @@ Além das funcionalidades obrigatórias, o **Portal de Estágios** inclui propos
    - Oferece perguntas aleatórias e feedback de desempenho textual.  
    - Pode ser expandido futuramente com **IA** para análise de respostas e sugestões de aprimoramento.
 
+## 🧑‍💻 Equipe de Desenvolvimento
+
+Dev Backend - José Pedro (https://github.com/JP18090)
+Dev Frontend - Daniel Bartels (https://github.com/Danibart54)
