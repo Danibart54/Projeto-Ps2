@@ -1,4 +1,4 @@
-package main.java.br.com.portalestagios.entity;
+package br.com.portalestagios.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

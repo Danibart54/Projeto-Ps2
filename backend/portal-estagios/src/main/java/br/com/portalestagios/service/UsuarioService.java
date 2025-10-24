@@ -33,7 +33,18 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
-    public void deleteById(Long id) {
-        usuarioRepository.deleteById(id);
+    public Optional<Usuario> update(Long id, Usuario usuario) {
+        return usuarioRepository.findById(id).map(existing -> {
+            usuario.setId(existing.getId());
+            return usuarioRepository.save(usuario);
+        });
+    }
+
+    public boolean delete(Long id) {
+        if (usuarioRepository.existsById(id)) {
+            usuarioRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

@@ -1,8 +1,9 @@
-package main.java.br.com.portalestagios.dao;
+package br.com.portalestagios.dao;
 
 import br.com.portalestagios.entity.Estudante;
-import main.java.br.com.portalestagios.repository.EstudanteRepository;
+import br.com.portalestagios.repository.EstudanteRepository;
 import org.springframework.stereotype.Component;
+import java.util.List;
 
 @Component
 public class EstudanteDAO {

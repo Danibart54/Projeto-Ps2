@@ -1,4 +1,4 @@
-package main.java.br.com.portalestagios.controller;
+package br.com.portalestagios.controller;
 
 import br.com.portalestagios.entity.Empresa;
 import br.com.portalestagios.service.EmpresaService;

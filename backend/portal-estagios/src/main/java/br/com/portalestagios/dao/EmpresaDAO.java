@@ -5,7 +5,7 @@ import br.com.portalestagios.repository.EmpresaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
-@Component
+@Repository
 public class EmpresaDAO {
     private final EmpresaRepository repo;
 

@@ -1,7 +1,7 @@
-package main.java.br.com.portalestagios.dao;
+package br.com.portalestagios.dao;
 
 import br.com.portalestagios.entity.Inscricao;
-import main.java.br.com.portalestagios.repository.InscricaoRepository;
+import br.com.portalestagios.repository.InscricaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.List;

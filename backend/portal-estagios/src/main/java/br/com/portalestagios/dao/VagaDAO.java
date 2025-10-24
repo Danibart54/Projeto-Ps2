@@ -1,7 +1,7 @@
 package br.com.portalestagios.dao;
 
-import br.com.portalestagios.entity.JobOffer;
-import br.com.portalestagios.repository.JobOfferRepository;
+import br.com.portalestagios.entity.Vaga;
+import br.com.portalestagios.repository.VagaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,21 +12,21 @@ import java.util.Optional;
 public class VagaDAO {
 
     @Autowired
-    private JobOfferRepository jobOfferRepository;
+    private VagaRepository VagaRepository;
 
-    public List<JobOffer> findAll() {
-        return jobOfferRepository.findAll();
+    public List<Vaga> findAll() {
+        return VagaRepository.findAll();
     }
 
-    public Optional<JobOffer> findById(Long id) {
-        return jobOfferRepository.findById(id);
+    public Optional<Vaga> findById(Long id) {
+        return VagaRepository.findById(id);
     }
 
-    public JobOffer save(JobOffer jobOffer) {
-        return jobOfferRepository.save(jobOffer);
+    public Vaga save(Vaga Vaga) {
+        return VagaRepository.save(Vaga);
     }
 
     public void deleteById(Long id) {
-        jobOfferRepository.deleteById(id);
+        VagaRepository.deleteById(id);
     }
 }

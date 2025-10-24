@@ -1,4 +1,4 @@
-package main.java.br.com.portalestagios.repository;
+package br.com.portalestagios.repository;
 
 import br.com.portalestagios.entity.Estudante; 
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,6 +1,6 @@
 package br.com.portalestagios.repository;
 
-import br.com.portalestagios.entity.JobOffer;
+import br.com.portalestagios.entity.Vaga;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
