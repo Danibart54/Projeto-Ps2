@@ -169,6 +169,6 @@ Além das funcionalidades obrigatórias, o **Portal de Estágios** inclui propos
 
 3. **Simulador de Entrevista Interativo**
    - Ferramenta voltada ao preparo dos estudantes para entrevistas reais.  
-   - Oferece perguntas aleatórias e feedback de desempenho (textual ou gamificado).  
+   - Oferece perguntas aleatórias e feedback de desempenho textual.  
    - Pode ser expandido futuramente com **IA** para análise de respostas e sugestões de aprimoramento.
 
