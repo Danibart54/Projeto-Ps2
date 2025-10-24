@@ -67,7 +67,7 @@ Estatísticas:
  - Vagas abertas e encerradas
  - Gráfico: vagas por área
 
-💻 Arquitetura da Solução
+## 💻 Arquitetura da Solução - BackEnd
 O projeto é organizado da seguinte forma:
 
 ```
@@ -130,3 +130,29 @@ mvn spring-boot:run
 ```
 
 A aplicação estará disponível em `http://localhost:8080`.
+
+## FrontEnd
+
+Visão geral
+...
+
+Estrutura do Front...
+Paginas/Rotas...
+
+Chamadas API(exemplos)...
+
+## Instalação 
+1. Entre na pasta dedicada ao FrontEnd
+```
+cd frontend
+```
+2. Baixe 
+```
+npm install
+```
+3. Rode
+```
+npm run dev
+```
+
+
