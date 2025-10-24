@@ -104,7 +104,7 @@ src
         └── application.properties
 ```
 
-## Instalação
+### Instalação
 
 1. Clone o repositório:
    ```
@@ -121,7 +121,7 @@ src
    mvn clean install
    ```
 
-## Execução
+### Execução
 
 Para executar a aplicação, utilize o seguinte comando:
 
@@ -141,7 +141,7 @@ Paginas/Rotas...
 
 Chamadas API(exemplos)...
 
-## Instalação 
+### Instalação 
 1. Entre na pasta dedicada ao FrontEnd
 ```
 cd frontend
@@ -154,17 +154,21 @@ npm install
 ```
 npm run dev
 ```
-🧠 Funcionalidades Inovadoras
-Além das funcionalidades obrigatórias, o Portal de Estágios inclui propostas de inovação que agregam valor à experiência do usuário e ampliam as possibilidades da plataforma:
-Integração com Google Maps
-Exibe a localização exata da vaga dentro da página de detalhes.
-Permite que o estudante visualize rotas, distância e tempo estimado até o local da empresa.
-Implementado via API do Google Maps, integrada ao endereço cadastrado pela empresa.
-Geração automática de Currículo em PDF
-Cada estudante pode gerar seu currículo automaticamente com base nas informações preenchidas no perfil.
-O documento é exportado em formato PDF com layout profissional, contendo dados pessoais, curso, áreas de interesse e histórico de candidaturas.
-Simulador de Entrevista Interativo
-Ferramenta voltada ao preparo dos estudantes para entrevistas reais.
-Oferece perguntas aleatórias e feedback de desempenho (textual ou gamificado).
-Pode ser expandido futuramente com IA para análise de respostas e sugestões de aprimoramento.
+## 🧠 Funcionalidades Inovadoras
+
+Além das funcionalidades obrigatórias, o **Portal de Estágios** inclui propostas de inovação que agregam valor à experiência do usuário e ampliam as possibilidades da plataforma:
+
+1. **Integração com Google Maps**
+   - Exibe a localização exata da vaga dentro da página de detalhes.  
+   - Permite que o estudante visualize rotas, distância e tempo estimado até o local da empresa.  
+   - Implementado via **API do Google Maps**, integrada ao endereço cadastrado pela empresa.
+
+2. **Geração Automática de Currículo em PDF**
+   - Cada estudante pode gerar seu currículo automaticamente com base nas informações preenchidas no perfil.  
+   - O documento é exportado em formato **PDF** com layout profissional, contendo dados pessoais, curso, áreas de interesse e histórico de candidaturas.
+
+3. **Simulador de Entrevista Interativo**
+   - Ferramenta voltada ao preparo dos estudantes para entrevistas reais.  
+   - Oferece perguntas aleatórias e feedback de desempenho (textual ou gamificado).  
+   - Pode ser expandido futuramente com **IA** para análise de respostas e sugestões de aprimoramento.
 
