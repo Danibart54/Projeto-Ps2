@@ -108,7 +108,7 @@ src
 
 1. Clone o repositório:
    ```
-   git clone <URL_DO_REPOSITORIO>
+   git clone <(https://github.com/Danibart54/Projeto-Ps2)>
    ```
 
 2. Navegue até o diretório do projeto:
