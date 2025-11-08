@@ -166,11 +166,6 @@ Além das funcionalidades obrigatórias, o **Portal de Estágios** inclui propos
    - Cada estudante pode gerar seu currículo automaticamente com base nas informações preenchidas no perfil.  
    - O documento é exportado em formato **PDF** com layout profissional, contendo dados pessoais, curso, áreas de interesse e histórico de candidaturas.
 
-3. **Simulador de Entrevista Interativo**
-   - Ferramenta voltada ao preparo dos estudantes para entrevistas reais.  
-   - Oferece perguntas aleatórias e feedback de desempenho textual.  
-   - Pode ser expandido futuramente com **IA** para análise de respostas e sugestões de aprimoramento.
-
 ## 🧑‍💻 Equipe de Desenvolvimento
 
 Dev Backend - José Pedro (https://github.com/JP18090)
