@@ -41,7 +41,7 @@
             <artifactId>postgresql</artifactId>
         </dependency>
 
-        <!-- H2 (dev) -->
+        <!-- H2  -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>

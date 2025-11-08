@@ -7,6 +7,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Vaga {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

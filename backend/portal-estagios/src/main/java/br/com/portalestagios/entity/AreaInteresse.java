@@ -7,6 +7,8 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+
 public class AreaInteresse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
