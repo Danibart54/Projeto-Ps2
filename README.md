@@ -153,16 +153,11 @@ npm install
 ```
 npm run dev
 ```
-## 🧠 Funcionalidades Inovadoras
+## 🧠 Funcionalidade Inovadora
 
 Além das funcionalidades obrigatórias, o **Portal de Estágios** inclui propostas de inovação que agregam valor à experiência do usuário e ampliam as possibilidades da plataforma:
 
-1. **Integração com Google Maps**
-   - Exibe a localização exata da vaga dentro da página de detalhes.  
-   - Permite que o estudante visualize rotas, distância e tempo estimado até o local da empresa.  
-   - Implementado via **API do Google Maps**, integrada ao endereço cadastrado pela empresa.
-
-2. **Geração Automática de Currículo em PDF**
+1. **Geração Automática de Currículo em PDF**
    - Cada estudante pode gerar seu currículo automaticamente com base nas informações preenchidas no perfil.  
    - O documento é exportado em formato **PDF** com layout profissional, contendo dados pessoais, curso, áreas de interesse e histórico de candidaturas.
 
