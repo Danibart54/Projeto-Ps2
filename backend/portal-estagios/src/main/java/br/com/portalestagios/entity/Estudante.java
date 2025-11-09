@@ -24,7 +24,8 @@ public class Estudante {
     private String curso;
     private String email;
     private String telefone;
-
+    
+    private List<String> historicoCandidaturas;
     @ManyToMany
     private Set<AreaInteresse> interesses;
 }
