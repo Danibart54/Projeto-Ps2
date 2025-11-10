@@ -1,5 +1,9 @@
 /workspaces/Projeto-Ps2/backend/portal-estagios/src/main/java/br/com/portalestagios/PortalEstagiosApplication.java
+/workspaces/Projeto-Ps2/backend/portal-estagios/src/main/java/br/com/portalestagios/config/CorsConfig.java
+/workspaces/Projeto-Ps2/backend/portal-estagios/src/main/java/br/com/portalestagios/config/DataLoader.java
 /workspaces/Projeto-Ps2/backend/portal-estagios/src/main/java/br/com/portalestagios/controller/AreaInteresseController.java
+/workspaces/Projeto-Ps2/backend/portal-estagios/src/main/java/br/com/portalestagios/controller/AuthController.java
+/workspaces/Projeto-Ps2/backend/portal-estagios/src/main/java/br/com/portalestagios/controller/CurriculoController.java
 /workspaces/Projeto-Ps2/backend/portal-estagios/src/main/java/br/com/portalestagios/controller/EmpresaController.java
 /workspaces/Projeto-Ps2/backend/portal-estagios/src/main/java/br/com/portalestagios/controller/EstudanteController.java
 /workspaces/Projeto-Ps2/backend/portal-estagios/src/main/java/br/com/portalestagios/controller/InscricaoController.java
@@ -24,6 +28,7 @@
 /workspaces/Projeto-Ps2/backend/portal-estagios/src/main/java/br/com/portalestagios/repository/UsuarioRepository.java
 /workspaces/Projeto-Ps2/backend/portal-estagios/src/main/java/br/com/portalestagios/repository/VagaRepository.java
 /workspaces/Projeto-Ps2/backend/portal-estagios/src/main/java/br/com/portalestagios/service/AreaInteresseService.java
+/workspaces/Projeto-Ps2/backend/portal-estagios/src/main/java/br/com/portalestagios/service/CurriculoService.java
 /workspaces/Projeto-Ps2/backend/portal-estagios/src/main/java/br/com/portalestagios/service/EmpresaService.java
 /workspaces/Projeto-Ps2/backend/portal-estagios/src/main/java/br/com/portalestagios/service/EstudanteService.java
 /workspaces/Projeto-Ps2/backend/portal-estagios/src/main/java/br/com/portalestagios/service/InscricaoService.java
