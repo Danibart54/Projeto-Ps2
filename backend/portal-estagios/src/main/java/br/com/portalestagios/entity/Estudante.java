@@ -3,6 +3,7 @@ package br.com.portalestagios.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.Set;
+import java.util.List;
 
 @Entity
 @Data
@@ -28,4 +29,7 @@ public class Estudante {
     private List<String> historicoCandidaturas;
     @ManyToMany
     private Set<AreaInteresse> interesses;
+    public Set<AreaInteresse> getAreasInteresse() {
+        return this.interesses;
+    }
 }

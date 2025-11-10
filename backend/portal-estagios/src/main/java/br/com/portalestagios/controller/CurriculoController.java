@@ -1,7 +1,10 @@
-package com.portalestagios.controller;
+package br.com.portalestagios.controller;
 
-import com.portalestagios.model.Estudante;
-import com.portalestagios.service.CurriculoService;
+import br.com.portalestagios.entity.Estudante;
+import br.com.portalestagios.service.CurriculoService;
+
+import java.io.IOException;
+
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +19,7 @@ public class CurriculoController {
     }
 
     @PostMapping("/gerar")
-    public ResponseEntity<byte[]> gerarCurriculo(@RequestBody Estudante estudante) {
+    public ResponseEntity<byte[]> gerarCurriculo(@RequestBody Estudante estudante) throws IOException {
         byte[] pdf = curriculoService.gerarCurriculoPDF(estudante);
 
         return ResponseEntity.ok()
