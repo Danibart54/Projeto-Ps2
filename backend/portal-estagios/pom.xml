@@ -19,7 +19,7 @@
     <description>Backend do Portal de Estágios</description>
 
     <properties>
-        <java.version>21</java.version>
+        <java.version>11</java.version>
     </properties>
 
     <dependencies>
@@ -92,7 +92,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.14.0</version>
                 <configuration>
-                    <release>17</release>
+                    <release>11</release>
                 </configuration>
             </plugin>
 
