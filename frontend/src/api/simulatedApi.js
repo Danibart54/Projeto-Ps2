@@ -1,4 +1,6 @@
-const BASE_URL = "http://localhost:8080";
+// Use REACT_APP_API_URL at build/dev time, otherwise use relative path so
+// requests are sent to the same origin (works with CRA proxy and Codespaces).
+const BASE_URL = process.env.REACT_APP_API_URL || "";
 
 async function request(path, { method = 'GET', body, headers = {} } = {}) {
   const opts = {
@@ -7,37 +9,33 @@ async function request(path, { method = 'GET', body, headers = {} } = {}) {
   };
   if (body !== undefined) opts.body = JSON.stringify(body);
 
-  
   const fullPath = BASE_URL + path;
 
   try {
     const res = await fetch(fullPath, opts);
-    if (!res.ok) {
     
+    if (!res.ok) {
       const text = await res.text();
+      // CORREÇÃO ABAIXO: Uso de crases (`) para interpolação
       throw new Error(`${res.status} ${res.statusText}: ${text}`);
     }
-    
-    
+
     const contentType = res.headers.get('content-type') || '';
     if (contentType.includes('application/json')) {
       return await res.json();
     }
     return await res.text();
   } catch (err) {
-    // Propaga o erro (ex: backend offline) para o componente que chamou
     console.error("Falha na chamada da API:", err);
     throw err;
   }
 }
 
-// Funções helper (get, post, etc.) que usam a 'request' base
+
 export const get = (path) => request(path, { method: 'GET' });
 export const post = (path, body) => request(path, { method: 'POST', body });
 export const put = (path, body) => request(path, { method: 'PUT', body });
 export const del = (path) => request(path, { method: 'DELETE' });
-
-
 
 // --- API DE AUTENTICAÇÃO ---
 export const apiLogin = async (email, senha, tipo) => {
@@ -54,10 +52,11 @@ export const apiAddArea = async (nomeArea) => {
 };
 
 export const apiDeleteArea = async (idArea) => {
+  // CORREÇÃO ABAIXO: Uso de crases (`)
   return del(`/areas/${idArea}`);
 };
 
-// --- API DE VAGAS ---
+
 export const apiCreateVaga = async (vagaData) => {
   return post("/vagas", vagaData);
 };

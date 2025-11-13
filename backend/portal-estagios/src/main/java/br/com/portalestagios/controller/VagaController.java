@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/vaga")
+@RequestMapping({"/api/vaga", "/vagas"})
 public class VagaController {
 
     @Autowired

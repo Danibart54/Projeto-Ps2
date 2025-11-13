@@ -11,8 +11,12 @@ public class CorsConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        // Permitir frontend local
-        config.addAllowedOrigin("http://localhost:3000");
+        // Permitir frontend local e previews (Codespaces / app.github.dev).
+        // Usamos addAllowedOriginPattern para aceitar padrões (útil para subdomínios do preview).
+        config.addAllowedOriginPattern("http://localhost:3000");
+        config.addAllowedOriginPattern("https://*.app.github.dev");
+        // Em ambiente de desenvolvimento, permitir qualquer origem também simplifica testes.
+        config.addAllowedOriginPattern("*");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         config.setAllowCredentials(true);

@@ -31,6 +31,12 @@ INSERT INTO vaga (id, titulo, descricao, localizacao, modalidade, carga_horaria,
   (1, 'Desenvolvedor Java Jr', 'Vaga para desenvolvedor Java', 'São Paulo', 'Presencial', '40h', 'Java, Spring Boot', FALSE, 1, 1),
   (2, 'Estágio em UX/UI', 'Auxiliar no design de interfaces', 'Remoto', 'Remoto', '20h', 'Figma, noções de UX', FALSE, 2, 2);
 
+-- Vagas públicas adicionais
+INSERT INTO vaga (id, titulo, descricao, localizacao, modalidade, carga_horaria, requisitos, encerrada, empresa_id, area_id) VALUES
+  (3, 'Estágio em Marketing Digital', 'Auxílio em campanhas e redes sociais', 'Remoto', 'Remoto', '20h', 'Noções de marketing, redes sociais', FALSE, 1, 3),
+  (4, 'Estágio em Engenharia Elétrica', 'Suporte em projetos elétricos', 'Campinas', 'Presencial', '30h', 'Circuitos, elétrica básica', FALSE, 2, 4),
+  (5, 'Auxiliar Administrativo', 'Rotinas administrativas e apoio', 'São Paulo', 'Presencial', '40h', 'Pacote Office, organização', FALSE, 1, 5);
+
 -- 6) Relacionamentos empresa ↔ área (tabela criada pelo Hibernate: empresa_areas_atuacao)
 INSERT INTO empresa_areas_atuacao (areas_atuacao_id, empresa_id) VALUES
   (1, 1),

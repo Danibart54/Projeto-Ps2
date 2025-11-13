@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/area-interesse")
+@RequestMapping({"/api/area-interesse", "/areas"})
 public class AreaInteresseController {
 
     @Autowired
