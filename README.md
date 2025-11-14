@@ -1,73 +1,118 @@
 # 🎓 Portal de Estágios – Projeto Final de Linguagem de Programação II
 
-Este projeto tem como objetivo desenvolver um Portal de Estágios que conecta estudantes, empresas e administradores em uma plataforma web moderna e integrada.
-A aplicação é composta por um backend RESTful em Java (Spring Boot) e uma SPA (Single Page Application) desenvolvida com framework JavaScript (React).
+O **Portal de Estágios** é uma plataforma web completa que conecta **estudantes**, **empresas** e **administradores**, oferecendo um ambiente moderno para cadastro, busca, gerenciamento e candidatura em vagas de estágio.
+
+A aplicação é composta por:
+
+- ✅ **Backend RESTful** em Java • Spring Boot  
+- ✅ **Frontend SPA** em React  
+- ✅ **Banco de dados H2** (desenvolvimento)  
+- ✅ **Integração completa + Fluxo de autenticação + Painéis personalizados**
+
+---
 
 ## 📘 Sumário
- - 🎯 Objetivo do Projeto
- - 👥 Perfis de Usuário
- - ⚙️ Requisitos Funcionais
- - 🧩 Tecnologias Utilizadas
- - 💻 Arquitetura da Solução
- - 📈 Dashboard e Estatísticas
- - 🧠 Funcionalidades Inovadoras
- - 🌐 Hospedagem (opcional)
- - 🧑‍💻 Equipe de Desenvolvimento
 
+- 🎯 Objetivo do Projeto  
+- 👥 Perfis de Usuário  
+- ⚙️ Requisitos Funcionais  
+- 🧩 Tecnologias Utilizadas  
+- 💻 Arquitetura da Solução  
+- 🌐 Execução e Instalação  
+- 🧠 Funcionalidades Inovadoras  
+- 📈 Dashboard e Estatísticas  
+- 🗃️ Estrutura do Banco de Dados  
+- 🔒 Segurança e Criptografia  
+- 🛠️ Features Implementadas Recentemente  
+- 🧑‍💻 Equipe de Desenvolvimento  
+
+---
 
 ## 🎯 Objetivo do Projeto
 
-O Portal de Estágios visa simplificar o processo de conexão entre empresas que ofertam vagas de estágio e estudantes que buscam oportunidades.
-Além de facilitar o cadastro e a busca de vagas, o sistema fornece painéis personalizados, controle de acesso e estatísticas administrativas.
+O Portal de Estágios foi desenvolvido para **simplificar a conexão entre empresas que ofertam vagas de estágio e estudantes** que buscam suas primeiras experiências profissionais.
+
+Entre os objetivos estão:
+
+- Facilitar inscrição em vagas  
+- Automatizar criação/gerenciamento de vagas pelas empresas  
+- Fornecer dashboards personalizados para cada usuário  
+- Criar um ambiente centralizado, simples e seguro  
+
+---
 
 ## 👥 Perfis de Usuário
-Perfil	Descrição	Permissões
-Administrador	Gerencia áreas de interesse, usuários e estatísticas do portal.	CRUD completo de todas as entidades + Dashboard.
-Empresa	Cadastra vagas, visualiza inscritos e encerra vagas.	CRUD de vagas e acesso ao painel da empresa.
-Estudante	Cadastra-se, busca vagas e realiza inscrições.	CRUD de perfil e inscrições em vagas.
+
+| Perfil | Descrição | Permissões |
+|-------|-----------|------------|
+| **Administrador** | Gerencia o portal. | CRUD completo de entidades + estatísticas + áreas de interesse |
+| **Empresa** | Publica vagas e gerencia candidatos. | CRUD de vagas, encerrar vagas, dashboard |
+| **Estudante** | Busca vagas e realiza inscrições. | CRUD de perfil, candidaturas, currículo PDF |
+
+---
 
 ## ⚙️ Requisitos Funcionais
-1. Cadastro e autenticação
- - Login individual para estudantes, empresas e administradores.
- - Senhas criptografadas.
 
-2. Áreas de interesse (Admin)
-  - CRUD completo, acessível apenas por administradores.
+### 1. Autenticação e Cadastro  
+- Login separado para **estudantes**, **empresas** e **administradores**  
+- Senhas criptografadas com **BCrypt**  
+- Auto-login após cadastro  
 
-3. Cadastro de empresas
-  - Campos: nome, CNPJ, e-mail, telefone, endereço, área(s) de atuação.
-  - Após o cadastro, podem criar vagas.
+### 2. Áreas de Interesse (Admin)  
+- CRUD completo  
+- Disponível para estudantes e empresas selecionarem no cadastro  
 
-4. Cadastro de estudantes
-  - Campos: nome, CPF, curso, e-mail, telefone e áreas de interesse.
+### 3. Empresas  
+- Cadastro com: nome, CNPJ, e-mail, telefone, endereço, áreas de atuação  
+- Criar/editar/encerrar vagas  
 
-5. Ofertas de vagas
- - Campos: título, descrição, área, localização, modalidade (remoto/presencial/híbrido), carga horária e requisitos.
- - Criadas apenas por empresas logadas.
- - Listagem pública filtrada por áreas de interesse dos estudantes.
+### 4. Estudantes  
+- Cadastro com: nome, CPF, curso, telefone, e-mail, áreas de interesse  
 
-6. Inscrição em vagas
- - Estudantes podem se inscrever em qualquer vaga aberta.
- - Uma vaga pode ter múltiplos candidatos.
+### 5. Vagas  
+- Criadas apenas por empresas  
+- Campos: título, descrição, área, modalidade, requisitos, carga horária  
+- Listagem pública sem login  
+- Filtros por área e modalidade  
 
-7. Painel personalizado
- - Estudante: vagas relacionadas ao perfil.
- - Empresa: candidatos inscritos em suas vagas.
- - Administrador: visão geral com estatísticas.
+### 6. Inscrições  
+- Estudante se inscreve em qualquer vaga aberta  
+- Evita duplicidade (check backend)  
 
-8. Encerramento de vagas
- - Empresa pode encerrar vagas, bloqueando novas inscrições.
+### 7. Painéis  
+- **Estudante**: aplicações, vagas relacionadas, currículo PDF  
+- **Empresa**: lista de vagas, candidatos, status  
+- **Admin**: estatísticas gerais  
 
-9. Dashboard administrativo
+### 8. Encerramento de Vagas  
+- Empresas encerram vagas → bloqueia novas inscrições  
 
-Estatísticas:
- - Número de empresas cadastradas
- - Número de estudantes
- - Vagas abertas e encerradas
- - Gráfico: vagas por área
+---
 
-## 💻 Arquitetura da Solução - BackEnd
-O projeto é organizado da seguinte forma:
+## 🧩 Tecnologias Utilizadas
+
+### Backend (Java)
+- Java 11  
+- Spring Boot 3.5  
+- Spring Data JPA  
+- H2 Database (desenvolvimento)  
+- Swagger / OpenAPI  
+- Lombok  
+- BCrypt Password Encoder  
+- Maven  
+
+### Frontend (React)
+- React 19.2  
+- React Router  
+- jsPDF (PDF do currículo)  
+- Context API (Auth)  
+- Fetch API / Axios  
+- CSS modular  
+- Vite / CRA (compatível)  
+
+---
+
+## 💻 Arquitetura da Solução – Backend
 
 ```
 src
@@ -76,93 +121,226 @@ src
     │   └── br
     │       └── com
     │           └── portalestagios
-    │               ├── PortalEstagiosApplication.java
+    │               ├── config
+    |               │   ├── CorsConfig.java
+    │               │   ├── DataLoader.java
+    │               │   └── SegurityConfig.java
     │               ├── controller
-    │               │   ├── AreaOfInterestController.java
-    │               │   └── UserController.java
-    │               ├── entity
-    │               │   ├── AreaOfInterest.java
-    │               │   ├── Company.java
-    │               │   ├── JobOffer.java
-    │               │   └── Usuario.java
-    │               ├── repository
-    │               │   ├── AreaOfInterestRepository.java
-    │               │   ├── CompanyRepository.java
-    │               │   ├── JobOfferRepository.java
-    │               │   └── UsuarioRepository.java
+    │               │   ├── AreaInteresseController.java
+    │               │   ├── AuthController.java
+    │               │   ├── CurriculoController.java
+    │               │   ├── EmpresaController.java
+    │               │   ├── EstudanteController.java
+    │               │   ├── InscriçãoController.java
+    │               │   ├── RegisterController.java
+    │               │   ├── UsuarioController.java
+    │               │   └── VagaController.java
     │               ├── dao
-    │               │   ├── AreaOfInterestDAO.java
-    │               │   ├── CompanyDAO.java
-    │               │   ├── JobOfferDAO.java
-    │               │   └── UserDAO.java
-    │               └── service
-    │                   ├── AreaOfInterestService.java
-    │                   ├── JobOfferService.java
-    │                   └── UserService.java
+    │               │   ├── AreaInteresseDao.java
+    │               │   ├── EmpresaDao.java
+    │               │   ├── EstudanteDao.java
+    │               │   ├── InscricaoDao.java
+    │               │   ├── UsuarioDao.java
+    │               │   └── VagaDao.java
+    │               ├── dto
+    │               │   ├── IncricaoRequest.java
+    │               │   ├── IncricaoResponse.java
+    │               │   ├── LoginResponse.java
+    │               │   ├── RegisterEmpresaRequest.java
+    │               │   ├── RegisterEstudanteRequest.java
+    │               │   └── VagaCreateRequest.java
+    │               ├── entity
+    │               │   ├── AreaInteresse.java
+    │               │   ├── Empresa.java
+    │               │   ├── Estudante.java
+    │               │   ├── Inscricao.java
+    │               │   ├── Usuario.java
+    │               │   └── Vaga.java
+    │               ├── repository
+    │               │   ├── AreaInteresseRepository.java
+    │               │   ├── EmpresaRepository.java
+    │               │   ├── EstudanteRepository.java
+    │               │   ├── IncricaoRepository.java
+    │               │   ├── UsuarioRepository.java
+    │               │   └── VagaRepository.java
+    │               ├── service
+    │               |   ├── AreaInteresseService.java
+    │               |   ├── CurriculoService.java
+    │               |   ├── EmpresaService.java
+    │               |   ├── EstudanteService.java
+    │               |   ├── InscricaoService.java
+    │               |   ├── RegisterService.java
+    │               |   ├── UsuarioService.java
+    │               |   └── VagaService.java
+    │               ├── PortalEstagiosApplication.java
     └── resources
-        └── application.properties
+          ├── application-local.properties
+          ├── application.properties
+          └── data.sql
 ```
 
-### Instalação
+**Destaques importantes:**
 
-1. Clone o repositório:
-   ```
-   git clone <(https://github.com/Danibart54/Projeto-Ps2)>
-   ```
+- API documentada em `/swagger-ui.html`  
+- Criptografia de senhas com BCrypt  
+- DAO + Repository  
+- DTOs para cadastro, login, criação de vaga, candidatura  
+- IDs iniciando em **100** para evitar conflitos ao reiniciar H2  
 
-2. Navegue até o diretório do projeto:
-   ```
-   cd portal-estagios
-   ```
+---
 
-3. Compile o projeto usando Maven:
-   ```
-   mvn clean install
-   ```
-
-### Execução
-
-Para executar a aplicação, utilize o seguinte comando:
+## 🌐 Arquitetura do Frontend
 
 ```
+frontend/
+└── src
+   ├── pages
+   ├── components
+   ├── contexts
+   ├── api
+   └── assets
+
+```
+
+### Páginas principais:
+- `/login-estudante`  
+- `/login-empresa`  
+- `/cadastro-estudante`  
+- `/cadastro-empresa`  
+- `/painel-estudante`  
+- `/painel-empresa`  
+- `/vagas` (lista pública)  
+- `/vaga/:id` (detalhes)
+
+### Componentes importantes:
+- `VagaCard`  
+- `Header`  
+- `Footer`  
+- `ProtectedRoute`  
+- `AuthProvider`  
+
+---
+
+## 🌐 Instalação e Execução
+
+### Backend
+
+1. Clonar repositório
+```bash
+git clone https://github.com/Danibart54/Projeto-Ps2
+
+```
+2. Entrar no backend
+```bash
+cd portal-estagios/backend/portal-estagios
+
+```
+
+3. Compilar
+```bash
+mvn clean install
+
+```
+
+4. Executar
+```bash
 mvn spring-boot:run
+
 ```
 
-A aplicação estará disponível em `http://localhost:8080`.
+### API disponível em:
 
-## FrontEnd
+- http://localhost:8080
+- H2 Console: /h2-console
 
-Visão geral
-...
+### Frontend
 
-Estrutura do Front...
-Paginas/Rotas...
-
-Chamadas API(exemplos)...
-
-### Instalação 
-1. Entre na pasta dedicada ao FrontEnd
-```
+2. Entrar no Frontend
+```bash
 cd frontend
+
 ```
-2. Baixe 
-```
+2. Instalar dependências
+```bash
 npm install
-```
-3. Rode
-```
-npm run dev
-```
-## 🧠 Funcionalidade Inovadora
 
-Além das funcionalidades obrigatórias, o **Portal de Estágios** inclui propostas de inovação que agregam valor à experiência do usuário e ampliam as possibilidades da plataforma:
+```
 
-1. **Geração Automática de Currículo em PDF**
-   - Cada estudante pode gerar seu currículo automaticamente com base nas informações preenchidas no perfil.  
-   - O documento é exportado em formato **PDF** com layout profissional, contendo dados pessoais, curso, áreas de interesse e histórico de candidaturas.
+3. Rodar
+```bash
+npm start
+```
+
+### Frontend disponível em:
+
+- http://localhost:5000
+- Proxy automático → backend localhost:8080
+
+## 🔒 Segurança e Criptografia
+---
+
+### Backend PasswordEncoder
+
+```java
+@Bean
+public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+}
+```
+- Todas as senhas são hashes BCrypt
+- Login compara hash usando passwordEncoder.matches()
+
+# 🛠️ Features Recentemente Implementadas
+
+## Sessão 1
+- 10 vagas abertas inseridas automaticamente
+- Implementação de lista pública de vagas
+
+## Sessão 2
+- Sistema completo de inscrições
+- Dashboard estudantil com candidaturas
+- PDF automático de currículo
+- Cadastro completo com validação de senha
+- Registro de empresas e estudantes
+- Auto-login pós-cadastro
+
+## Sessão 3
+- Fluxo completo revisado
+
+## Sessão 4
+- DTOs de cadastro
+- `RegisterService` com transação atômica
+- IDs autoincrement reiniciando em 100
+- Novo `LoginResponse` (`usuarioId`, `estudanteId`, `empresaId`)
+- Criar vaga via DTO com área e empresa válidas
+- Dashboard empresa finalizado
+
+# 🧠 Funcionalidades Inovadoras
+## Geração Automática de Currículo PDF
+- Feito via jsPDF
+- Inclui:
+  - Dados pessoais
+  - Áreas de interesse
+  - Histórico de candidaturas
+  - Layout limpo e profissional
+- Baixa automaticamente no navegador
+
+## Sistema Futuro (planejado)
+- Simulador de entrevista com pontuação
+- Envio de e-mails automáticos
+- Chatbot para alunos (IA opcional)
+
+# 🗃️ Banco de Dados
+- H2 em modo Postgres
+- Recriado a cada execução
+- Arquivo `data.sql` carrega:
+  - Áreas de interesse
+  - Empresas e estudantes mock
+  - 10 vagas iniciais
+  - IDs iniciando em 100
 
 ## 🧑‍💻 Equipe de Desenvolvimento
 
-Dev Backend - José Pedro (https://github.com/JP18090)
+- Dev Backend - José Pedro (https://github.com/JP18090)
 <br>
-Dev Frontend - Daniel Bartels (https://github.com/Danibart54)
+- Dev Frontend - Daniel Bartels (https://github.com/Danibart54)
