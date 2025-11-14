@@ -28,5 +28,5 @@ for i in {1..30}; do
 done
 
 # Start frontend
-echo "Starting frontend on port 5000..."
+echo "Starting frontend on port 3000..."
 cd "$PROJECT_ROOT/frontend" && exec npm start
