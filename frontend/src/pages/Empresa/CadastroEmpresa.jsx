@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { apiGetAreas, apiCreateCandidato } from '../../api/simulatedApi';
+import { apiGetAreas, apiCreateEmpresa } from '../../api/simulatedApi';
 import '../../styles/Form.css';
 
-const CadastroEstudante = () => {
+const CadastroEmpresa = () => {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [curso, setCurso] = useState('');
+  const [cnpj, setCnpj] = useState('');
   const [telefone, setTelefone] = useState('');
-  const [areasInteresse, setAreasInteresse] = useState([]);
+  const [endereco, setEndereco] = useState('');
+  const [areasAtuacao, setAreasAtuacao] = useState([]);
   const [areasDisponiveis, setAreasDisponiveis] = useState([]);
   const [loading, setLoading] = useState(false);
   const [erro, setErro] = useState('');
@@ -32,7 +32,7 @@ const CadastroEstudante = () => {
   }, []);
 
   const handleAreaToggle = (areaId) => {
-    setAreasInteresse(prev =>
+    setAreasAtuacao(prev =>
       prev.includes(areaId)
         ? prev.filter(id => id !== areaId)
         : [...prev, areaId]
@@ -55,28 +55,28 @@ const CadastroEstudante = () => {
 
     setLoading(true);
     try {
-      const estudanteData = {
+      const empresaData = {
         nome,
         email,
         senha,
-        cpf,
-        curso,
+        cnpj,
         telefone,
-        interesses: areasInteresse
+        endereco,
+        areasAtuacao: areasAtuacao
       };
 
-      await apiCreateCandidato(estudanteData);
+      await apiCreateEmpresa(empresaData);
       
-      await login(email, senha, 'ESTUDANTE');
+      await login(email, senha, 'EMPRESA');
       
-      navigate('/painel-estudante', { replace: true });
+      navigate('/painel-empresa', { replace: true });
     } catch (error) {
       console.error('Erro ao cadastrar:', error);
       const errorMessage = error?.message || '';
       if (errorMessage.includes('Email já cadastrado')) {
         setErro('Este email já está cadastrado. Tente fazer login ou use outro email.');
-      } else if (errorMessage.includes('Área de interesse não encontrada')) {
-        setErro('Uma ou mais áreas de interesse selecionadas são inválidas.');
+      } else if (errorMessage.includes('Área de atuação não encontrada')) {
+        setErro('Uma ou mais áreas de atuação selecionadas são inválidas.');
       } else {
         setErro('Erro ao realizar cadastro. Verifique os dados e tente novamente.');
       }
@@ -88,10 +88,10 @@ const CadastroEstudante = () => {
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
-        <h2>Cadastro de Estudante</h2>
+        <h2>Cadastro de Empresa</h2>
 
         <div className="form-group">
-          <label htmlFor="nome">Nome Completo *</label>
+          <label htmlFor="nome">Nome da Empresa *</label>
           <input
             type="text"
             id="nome"
@@ -137,58 +137,62 @@ const CadastroEstudante = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="cpf">CPF *</label>
+          <label htmlFor="cnpj">CNPJ *</label>
           <input
             type="text"
-            id="cpf"
-            value={cpf}
-            onChange={(e) => setCpf(e.target.value)}
-            placeholder="000.000.000-00"
+            id="cnpj"
+            value={cnpj}
+            onChange={(e) => setCnpj(e.target.value)}
+            placeholder="00.000.000/0000-00"
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="curso">Curso *</label>
-          <input
-            type="text"
-            id="curso"
-            value={curso}
-            onChange={(e) => setCurso(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="telefone">Telefone</label>
+          <label htmlFor="telefone">Telefone *</label>
           <input
             type="tel"
             id="telefone"
             value={telefone}
             onChange={(e) => setTelefone(e.target.value)}
             placeholder="(00) 00000-0000"
+            required
           />
         </div>
 
         <div className="form-group">
-          <label>Áreas de Interesse</label>
+          <label htmlFor="endereco">Endereço *</label>
+          <input
+            type="text"
+            id="endereco"
+            value={endereco}
+            onChange={(e) => setEndereco(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Áreas de Atuação *</label>
           <div className="checkbox-group">
             {areasDisponiveis.map(area => (
               <label key={area.id} className="checkbox-label">
                 <input
                   type="checkbox"
-                  checked={areasInteresse.includes(area.id)}
+                  checked={areasAtuacao.includes(area.id)}
                   onChange={() => handleAreaToggle(area.id)}
                 />
                 {area.nome}
               </label>
             ))}
           </div>
+          {areasAtuacao.length === 0 && (
+            <small className="form-help">Selecione pelo menos uma área de atuação</small>
+          )}
         </div>
 
         {erro && <p className="form-error">{erro}</p>}
 
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={loading || areasAtuacao.length === 0}>
           {loading ? 'Cadastrando...' : 'Cadastrar'}
         </button>
       </form>
@@ -196,4 +200,4 @@ const CadastroEstudante = () => {
   );
 };
 
-export default CadastroEstudante;
+export default CadastroEmpresa;

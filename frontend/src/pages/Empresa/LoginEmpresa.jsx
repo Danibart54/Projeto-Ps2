@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import '../../styles/Form.css';
 
@@ -70,6 +70,12 @@ const LoginEmpresa = () => {
         <button type="submit" disabled={loading}>
           {loading ? 'Entrando...' : 'Entrar'}
         </button>
+        
+        <div className="form-footer">
+          <p>
+            Não tem uma conta? <Link to="/cadastro-empresa">Cadastre sua empresa aqui</Link>
+          </p>
+        </div>
       </form>
     </div>
   );

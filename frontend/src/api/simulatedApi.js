@@ -75,11 +75,13 @@ export const apiGetVagas = () => get('/api/vaga');
 export const apiGetVagasPorInteresse = (areas) => post('/api/vaga/interesses', { areas });
 export const apiDeleteVaga = (idVaga) => del(`/api/vaga/${idVaga}`);
 
-// CANDIDATURAS
-export const apiCandidatarVaga = (idVaga, idCandidato) => post('/api/candidatura', { idVaga, idCandidato });
-export const apiGetCandidaturas = (idCandidato) => get(`/api/candidatura/candidato/${idCandidato}`);
-export const apiGetCandidaturasVaga = (idVaga) => get(`/api/candidatura/vaga/${idVaga}`);
-export const apiCancelarCandidatura = (idCandidatura) => del(`/api/candidatura/${idCandidatura}`);
+// INSCRICOES (CANDIDATURAS)
+export const apiCreateInscricao = (vagaId, estudanteId) => post('/api/inscricao', { vagaId, estudanteId });
+export const apiGetInscricoesByEstudante = (estudanteId) => get(`/api/inscricao/estudante/${estudanteId}`);
+export const apiGetInscricoesByVaga = (vagaId) => get(`/api/inscricao/vaga/${vagaId}`);
+export const apiCheckInscricaoExists = (vagaId, estudanteId) => get(`/api/inscricao/check?vagaId=${vagaId}&estudanteId=${estudanteId}`);
+export const apiDeleteInscricao = (inscricaoId) => del(`/api/inscricao/${inscricaoId}`);
+
 
 // CANDIDATOS
 export const apiGetCandidato = (id) => get(`/api/candidato/${id}`);

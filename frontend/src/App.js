@@ -8,6 +8,7 @@ import Home from './pages/home';
 import LoginEstudante from './pages/Estudante/LoginEstudante';
 import LoginEmpresa from './pages/Empresa/LoginEmpresa';
 import CadastroEstudante from './pages/Estudante/CadastroEstudante';
+import CadastroEmpresa from './pages/Empresa/CadastroEmpresa';
 import PainelEstudante from './pages/Estudante/PainelEstudante';
 import PainelEmpresa from './pages/Empresa/PainelEmpresa';
 import AdminDashboard from './pages/Admin/AdminDashboard';
@@ -30,6 +31,7 @@ function App() {
           {/* Autenticação */}
           <Route path="/login-estudante" element={<LoginEstudante />} />
           <Route path="/login-empresa" element={<LoginEmpresa />} />
+          <Route path="/cadastro-empresa" element={<CadastroEmpresa />} />
           <Route path="/cadastro-estudante" element={<CadastroEstudante />} />
 
           {/* Rotas Privadas - ESTUDANTE */}

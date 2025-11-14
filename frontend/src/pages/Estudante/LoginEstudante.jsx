@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import '../../styles/Form.css'; // CSS para formulários
+import '../../styles/Form.css'; 
 
 const LoginEstudante = () => {
   const [email, setEmail] = useState('');
@@ -54,6 +54,12 @@ const LoginEstudante = () => {
           {loading ? 'Entrando...' : 'Entrar'}
         </button>
       </form>
+        
+        <div className="form-footer">
+          <p>
+            Não tem uma conta? <Link to="/cadastro-estudante">Cadastre-se aqui</Link>
+          </p>
+        </div>
     </div>
   );
 };

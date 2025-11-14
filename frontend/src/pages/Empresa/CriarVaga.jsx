@@ -1,22 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { apiCreateVaga } from '../../api/simulatedApi';
+import { useAuth } from '../../contexts/AuthContext';
+import { apiCreateVaga, apiGetAreas } from '../../api/simulatedApi';
 import '../../styles/Form.css';
 
 const CriarVaga = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [formData, setFormData] = useState({
     titulo: '',
     descricao: '',
-    area: '',
+    areaId: '',
     localizacao: '',
-    modalidade: 'presencial', // Valor padrão
+    modalidade: 'Presencial',
     cargaHoraria: '',
     requisitos: ''
   });
+  const [areas, setAreas] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [erro, setErro] = useState('');
 
-  // Um único handler para todos os inputs
+  useEffect(() => {
+    const fetchAreas = async () => {
+      try {
+        const areasData = await apiGetAreas();
+        setAreas(areasData || []);
+      } catch (error) {
+        console.error('Erro ao carregar áreas:', error);
+        setErro('Erro ao carregar áreas de interesse');
+      }
+    };
+    fetchAreas();
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -27,14 +43,45 @@ const CriarVaga = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErro('');
+
+    if (!user || !user.empresaId) {
+      setErro('Erro: perfil de empresa não encontrado. Tente fazer login novamente.');
+      return;
+    }
+
+    if (!formData.areaId) {
+      setErro('Por favor, selecione uma área de atuação');
+      return;
+    }
+
     setLoading(true);
     
     try {
-      await apiCreateVaga(formData);
+      const vagaData = {
+        titulo: formData.titulo,
+        descricao: formData.descricao,
+        areaId: parseInt(formData.areaId),
+        localizacao: formData.localizacao,
+        modalidade: formData.modalidade,
+        cargaHoraria: formData.cargaHoraria,
+        requisitos: formData.requisitos,
+        empresaId: user.empresaId
+      };
+
+      await apiCreateVaga(vagaData);
       alert('Vaga criada com sucesso!');
-      navigate('/painel-empresa'); // Redireciona para o painel
+      navigate('/painel-empresa');
     } catch (error) {
-      alert('Erro ao criar vaga.');
+      console.error('Erro ao criar vaga:', error);
+      const errorMessage = error?.message || '';
+      if (errorMessage.includes('Área não encontrada')) {
+        setErro('Área selecionada inválida. Por favor, tente novamente.');
+      } else if (errorMessage.includes('Empresa não encontrada')) {
+        setErro('Erro: empresa não encontrada. Tente fazer login novamente.');
+      } else {
+        setErro('Erro ao criar vaga. Verifique os dados e tente novamente.');
+      }
     } finally {
       setLoading(false);
     }
@@ -45,55 +92,107 @@ const CriarVaga = () => {
       <form onSubmit={handleSubmit}>
         <h2>Ofertar Nova Vaga</h2>
 
-        {/* Título */}
+        {erro && <div className="error-message">{erro}</div>}
+
         <div className="form-group">
-          <label htmlFor="titulo">Título da Vaga</label>
-          <input type="text" id="titulo" name="titulo" value={formData.titulo} onChange={handleChange} required />
+          <label htmlFor="titulo">Título da Vaga *</label>
+          <input 
+            type="text" 
+            id="titulo" 
+            name="titulo" 
+            value={formData.titulo} 
+            onChange={handleChange} 
+            required 
+          />
         </div>
 
-        {/* Descrição */}
         <div className="form-group">
-          <label htmlFor="descricao">Descrição</label>
-          <textarea id="descricao" name="descricao" value={formData.descricao} onChange={handleChange} required />
+          <label htmlFor="descricao">Descrição *</label>
+          <textarea 
+            id="descricao" 
+            name="descricao" 
+            value={formData.descricao} 
+            onChange={handleChange} 
+            rows="4"
+            required 
+          />
         </div>
 
-        {/* Área (Idealmente um <select> populado pela API de Áreas) */}
         <div className="form-group">
-          <label htmlFor="area">Área</label>
-          <input type="text" id="area" name="area" value={formData.area} onChange={handleChange} placeholder="Ex: Desenvolvimento Frontend" required />
-        </div>
-
-        {/* Localização */}
-        <div className="form-group">
-          <label htmlFor="localizacao">Localização</label>
-          <input type="text" id="localizacao" name="localizacao" value={formData.localizacao} onChange={handleChange} placeholder="Ex: São Paulo, SP" required />
-        </div>
-
-        {/* Modalidade */}
-        <div className="form-group">
-          <label htmlFor="modalidade">Modalidade</label>
-          <select id="modalidade" name="modalidade" value={formData.modalidade} onChange={handleChange}>
-            <option value="presencial">Presencial</option>
-            <option value="remoto">Remoto</option>
-            <option value="hibrido">Híbrido</option>
+          <label htmlFor="areaId">Área de Atuação *</label>
+          <select 
+            id="areaId" 
+            name="areaId" 
+            value={formData.areaId} 
+            onChange={handleChange} 
+            required
+          >
+            <option value="">Selecione uma área</option>
+            {areas.map(area => (
+              <option key={area.id} value={area.id}>{area.nome}</option>
+            ))}
           </select>
         </div>
 
-        {/* Carga Horária */}
         <div className="form-group">
-          <label htmlFor="cargaHoraria">Carga Horária (horas/semana)</label>
-          <input type="number" id="cargaHoraria" name="cargaHoraria" value={formData.cargaHoraria} onChange={handleChange} required />
+          <label htmlFor="localizacao">Localização *</label>
+          <input 
+            type="text" 
+            id="localizacao" 
+            name="localizacao" 
+            value={formData.localizacao} 
+            onChange={handleChange} 
+            placeholder="Ex: São Paulo, SP" 
+            required 
+          />
         </div>
 
-        {/* Requisitos */}
         <div className="form-group">
-          <label htmlFor="requisitos">Requisitos (separados por vírgula)</label>
-          <input type="text" id="requisitos" name="requisitos" value={formData.requisitos} onChange={handleChange} />
+          <label htmlFor="modalidade">Modalidade *</label>
+          <select 
+            id="modalidade" 
+            name="modalidade" 
+            value={formData.modalidade} 
+            onChange={handleChange}
+          >
+            <option value="Presencial">Presencial</option>
+            <option value="Remoto">Remoto</option>
+            <option value="Híbrido">Híbrido</option>
+          </select>
         </div>
 
-        <button type="submit" disabled={loading}>
+        <div className="form-group">
+          <label htmlFor="cargaHoraria">Carga Horária *</label>
+          <input 
+            type="text" 
+            id="cargaHoraria" 
+            name="cargaHoraria" 
+            value={formData.cargaHoraria} 
+            onChange={handleChange} 
+            placeholder="Ex: 20h/semana ou 4h/dia"
+            required 
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="requisitos">Requisitos</label>
+          <textarea 
+            id="requisitos" 
+            name="requisitos" 
+            value={formData.requisitos} 
+            onChange={handleChange}
+            rows="3"
+            placeholder="Descreva os requisitos para a vaga"
+          />
+        </div>
+
+        <button type="submit" disabled={loading || areas.length === 0}>
           {loading ? 'Publicando...' : 'Publicar Vaga'}
         </button>
+
+        {areas.length === 0 && !erro && (
+          <p className="info-message">Carregando áreas disponíveis...</p>
+        )}
       </form>
     </div>
   );
