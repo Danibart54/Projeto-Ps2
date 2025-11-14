@@ -15,6 +15,8 @@ public class CorsConfig {
         // Usamos addAllowedOriginPattern para aceitar padrões (útil para subdomínios do preview).
         config.addAllowedOriginPattern("http://localhost:3000");
         config.addAllowedOriginPattern("https://*.app.github.dev");
+        config.addAllowedOriginPattern("https://*.codespaces.dev");
+        config.addAllowedOriginPattern("https://github.dev");
         // Em ambiente de desenvolvimento, permitir qualquer origem também simplifica testes.
         config.addAllowedOriginPattern("*");
         config.addAllowedHeader("*");
