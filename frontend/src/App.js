@@ -12,6 +12,7 @@ import PainelEstudante from './pages/Estudante/PainelEstudante';
 import PainelEmpresa from './pages/Empresa/PainelEmpresa';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import GerenciarAreas from './pages/Admin/GerenciarAreas';
+import GerenciarVagas from './pages/Admin/GerenciarVagas';
 import ListaVagasPublica from './pages/Vagas/ListaVagasPublicas';
 import CriarVaga from './pages/Empresa/CriarVaga';
 
@@ -46,6 +47,7 @@ function App() {
           <Route element={<PrivateRoute perfisPermitidos={['ADMIN']} />}>
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/admin/areas" element={<GerenciarAreas />} />
+            <Route path="/admin/vagas" element={<GerenciarVagas />} />
           </Route>
 
         </Routes>
