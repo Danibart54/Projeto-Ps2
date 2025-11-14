@@ -1,6 +1,11 @@
 package br.com.portalestagios.service;
 
+import br.com.portalestagios.dto.VagaCreateRequest;
+import br.com.portalestagios.entity.AreaInteresse;
+import br.com.portalestagios.entity.Empresa;
 import br.com.portalestagios.entity.Vaga;
+import br.com.portalestagios.repository.AreaInteresseRepository;
+import br.com.portalestagios.repository.EmpresaRepository;
 import br.com.portalestagios.repository.VagaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +17,13 @@ public class VagaService {
 
     @Autowired
     private VagaRepository vagaRepository;
+    
+    @Autowired
+    private AreaInteresseRepository areaInteresseRepository;
+    
+    @Autowired
+    private EmpresaRepository empresaRepository;
+    
     public List<Vaga> findAll() {
         return vagaRepository.findAll();
     }
@@ -21,6 +33,28 @@ public class VagaService {
     }
 
     public Vaga save(Vaga vaga) {
+        return vagaRepository.save(vaga);
+    }
+    
+    public Vaga createVaga(VagaCreateRequest request) {
+        AreaInteresse area = areaInteresseRepository.findById(request.getAreaId())
+            .orElseThrow(() -> new IllegalArgumentException("Área não encontrada: " + request.getAreaId()));
+            
+        Empresa empresa = empresaRepository.findById(request.getEmpresaId())
+            .orElseThrow(() -> new IllegalArgumentException("Empresa não encontrada: " + request.getEmpresaId()));
+        
+        Vaga vaga = Vaga.builder()
+            .titulo(request.getTitulo())
+            .descricao(request.getDescricao())
+            .area(area)
+            .localizacao(request.getLocalizacao())
+            .modalidade(request.getModalidade())
+            .cargaHoraria(request.getCargaHoraria())
+            .requisitos(request.getRequisitos())
+            .empresa(empresa)
+            .encerrada(false)
+            .build();
+            
         return vagaRepository.save(vaga);
     }
 

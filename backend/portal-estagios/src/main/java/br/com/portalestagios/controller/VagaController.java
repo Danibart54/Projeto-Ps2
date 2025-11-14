@@ -1,15 +1,18 @@
 package br.com.portalestagios.controller;
 
+import br.com.portalestagios.dto.VagaCreateRequest;
 import br.com.portalestagios.entity.Vaga;
 import br.com.portalestagios.service.VagaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping({"/api/vaga", "/vagas"})
+@RequestMapping({"/api/vaga", "/vaga", "/vagas"})
 public class VagaController {
 
     @Autowired
@@ -28,8 +31,14 @@ public class VagaController {
     }
 
     @PostMapping
-    public Vaga createVaga(@RequestBody Vaga vaga) {
-        return vagaService.save(vaga);
+    public ResponseEntity<?> createVaga(@RequestBody VagaCreateRequest request) {
+        try {
+            Vaga vaga = vagaService.createVaga(request);
+            return ResponseEntity.status(HttpStatus.CREATED).body(vaga);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(Map.of("message", e.getMessage()));
+        }
     }
 
     @PutMapping("/{id}")

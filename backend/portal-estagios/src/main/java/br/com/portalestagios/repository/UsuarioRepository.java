@@ -9,6 +9,9 @@ import java.util.Optional;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     // Métodos adicionais de consulta podem ser definidos aqui, se necessário
 
-    // Adicionado para permitir autenticação simples pelo backend
+    // Busca usuário por email para autenticação
+    Optional<Usuario> findByEmail(String email);
+    
+    // Método legado - manter para compatibilidade
     Optional<Usuario> findByEmailAndSenha(String email, String senha);
 }
