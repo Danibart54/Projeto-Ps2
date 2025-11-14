@@ -276,8 +276,63 @@ npm start
 - http://localhost:5000
 - Proxy automático → backend localhost:8080
 
-## 🔒 Segurança e Criptografia
----
+## 🔒 Segurança e Criptografia 
+A criptografia foi implementada para atender ao requisito de segurança. Utilizamos o algoritmo BCrypt, que é o padrão da indústria para hashing de senhas.
+
+### O Conceito: Hash Unidirecional
+
+A senha não é "criptografada" no sentido de poder ser descriptografada depois. Ela passa por um processo de Hashing.
+
+* Hash: É uma transformação matemática irreversível.
+
+* Você transforma "123" em $2a$10$EixZa. É matematicamente impossível transformar $2a$10$EixZa... de volta para "123".
+
+Fluxo 1: Cadastro (Salvando a Senha)
+Quando o DataLoader roda ou um novo usuário se cadastra:
+
+1. Entrada: O sistema recebe a senha limpa: "123".
+
+2. Processamento (UsuarioService.java):
+
+   * O serviço chama passwordEncoder.encode("123").
+
+   * O BCrypt gera um "Salt" (dados aleatórios) e mistura com a senha.
+
+   * O resultado é gerado: $2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy.
+
+3. Armazenamento: O banco de dados salva apenas esse código gigante. A senha "123" nunca é salva.
+
+Fluxo 2: Login (Verificando a Senha)
+Quando o usuário tenta entrar no sistema via AuthController.java:
+
+1.Entrada: O usuário digita "123" no React.
+
+2.Busca: O Backend busca no banco o usuário pelo email (ex: admin@email.com).
+
+3.Recuperação: O banco retorna o usuário com a senha hash: $2a$10$N9qo8u....
+ *  Comparação (passwordEncoder.matches()):
+   
+ * O sistema pega a senha digitada ("123") e o hash do banco ($2a$10$N9qo8u...).
+   
+ * O BCrypt pega o "Salt" de dentro do hash do banco, aplica na senha digitada e vê se o resultado é idêntico.
+   
+ * Se for igual, o login é aprovado. Se for diferente, negado.
+   Onde está no código?
+Dependência: Adicionamos spring-security-crypto no pom.xml.
+
+Hash ao Salvar: No arquivo src/main/java/br/com/portalestagios/service/UsuarioService.java, interceptamos o salvamento do usuário para criptografar a senha:
+
+```java
+        // UsuarioService.java
+private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+public Usuario save(Usuario usuario) {
+    // Transforma "123" em hash seguro antes de ir para o banco
+    String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
+    usuario.setSenha(senhaCriptografada);
+    return usuarioRepository.save(usuario);
+}
+```
 
 ### Backend PasswordEncoder
 
@@ -289,6 +344,9 @@ public PasswordEncoder passwordEncoder() {
 ```
 - Todas as senhas são hashes BCrypt
 - Login compara hash usando ```passwordEncoder.matches()```
+
+###  Por que isso é seguro?
+Mesmo que um hacker invada seu banco de dados e roube a tabela Usuario, ele verá apenas códigos como $2a$10$N9qo8u.... Ele não saberá que a senha original era "123", protegendo as contas dos seus usuários.
 
 # 🛠️ Features Recentemente Implementadas
 
