@@ -288,7 +288,7 @@ public PasswordEncoder passwordEncoder() {
 }
 ```
 - Todas as senhas são hashes BCrypt
-- Login compara hash usando passwordEncoder.matches()
+- Login compara hash usando ```passwordEncoder.matches()```
 
 # 🛠️ Features Recentemente Implementadas
 
