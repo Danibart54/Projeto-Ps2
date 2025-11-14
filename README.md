@@ -92,7 +92,7 @@ Entre os objetivos estão:
 ## 🧩 Tecnologias Utilizadas
 
 ### Backend (Java)
-- Java 11  
+- Java 17  
 - Spring Boot 3.5  
 - Spring Data JPA  
 - H2 Database (desenvolvimento)  
